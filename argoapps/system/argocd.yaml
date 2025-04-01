@@ -8,7 +8,7 @@ metadata:
 spec:
   project: system
   source:
-    path: apps/k3s/_system/argocd
+    path: apps/system/argocd
     repoURL: https://github.com/TheBigLee/gitops-k3s.git
     targetRevision: HEAD
   destination:
