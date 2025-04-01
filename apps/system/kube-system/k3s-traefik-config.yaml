@@ -17,8 +17,11 @@ spec:
         expose: true
         protocol: TCP
         exposePort: 80
-        redirectTo:
-          port: websecure
+        redirection:
+          entrypoint:
+            to: websecure
+            scheme: https
+            permanent: true
       websecure:
         port: 443
         expose: true
