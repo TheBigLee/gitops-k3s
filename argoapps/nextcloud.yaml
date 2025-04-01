@@ -1,0 +1,76 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nextcloud
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: apps
+  sources:
+    - chart: nextcloud/nextcloud
+      repoURL: nextcloud.github.io/helm
+      targetRevision: 6.6.9
+      helm:
+        values: |
+          nextcloud:
+            host: nextcloud.bigli.io
+            existingSecret:
+              enabled: true
+              secretName: nextcloud-creds
+              usernameKey: username
+              passwordKey: password
+          objectStore:
+            s3:
+              enabled: true
+              existingSecret: s3-creds
+              secretKeys:
+                host: host
+                accessKey: accessKey
+                secretKey: secretKey
+                bucket: bucket
+                sse_c_key: sse_c_key
+          ingress:
+            enabled: true
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt-prod-desec
+              traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd
+            tls:
+            - secretName: ingress-cert
+              hosts:
+              - nextcloud.bigli.io
+          internalDatabase:
+            enabled: false
+          postgresql:
+            global:
+              postgresql:
+                auth:
+                 existingSecret: psql-creds
+                 secretKeys:
+                   adminPasswordKey: adminPassword
+                   userPasswordKey: userPassword
+                   replicationPasswordKey: replicationKey
+            enabled: true
+            primary:
+              persistence:
+                enabled: true
+                storageClass: local-path
+          externalDatabase:
+            type: postgresql
+            existingSecret: enabled
+            secretName: psql-creds
+            usernameKey: username
+            passwordKey: userPassword
+          persistence:
+            enabled: false
+    - path: apps/nextcloud
+      repoURL: https://git.tbrnt.ch/tobru/gitops-zurrli.git
+      targetRevision: HEAD
+  destination:
+    namespace: forgejo
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
