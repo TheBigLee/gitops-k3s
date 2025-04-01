@@ -1,0 +1,56 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "labels": [
+    "maintenance"
+  ],
+  "enabledManagers": [
+    "kubernetes",
+    "argocd"
+  ],
+  "kubernetes": {
+    "fileMatch": [
+      "^apps/.*\\.yaml$"
+    ]
+  },
+  "argocd": {
+    "fileMatch": [
+      "argoapps/.+\\.yaml$"
+    ]
+  },
+  "major": {
+    "enabled": true
+  },
+  "recreateWhen": "always",
+  "rebaseWhen": "conflicted",
+  "prHourlyLimit": 0,
+  "branchConcurrentLimit": 0,
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "patch",
+        "digest"
+      ],
+      "matchCurrentVersion": "!/^0/",
+      "requiredStatusChecks": null,
+      "automerge": true
+    },
+    {
+      "datasources": [
+        "docker",
+        "helm"
+      ],
+      "major": {
+        "enabled": true
+      }
+    },
+    {
+      "paths": [
+        "argoapps/system/k8up.yaml",
+        "argoapps/system/reloader.yaml",
+        "argoapps/system/kured.yaml"
+      ],
+      "automerge": true,
+      "requiredStatusChecks": null
+    }
+  ]
+}
