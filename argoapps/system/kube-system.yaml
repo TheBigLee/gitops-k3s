@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: kube-system
+  namespace: argocd
+spec:
+  generators:
+  - clusters: {}
+  template:
+    metadata:
+      name: '{{name}}-kube-system'
+    spec:
+      project: system
+      source:
+        path: 'apps/system/kube-system'
+        repoURL: https://github.com/TheBigLee/gitops-k3s.git
+        targetRevision: HEAD
+      destination:
+        server: '{{server}}'
+        namespace: kube-system

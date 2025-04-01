@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilium
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  source:
+    chart: cilium
+    repoURL: https://helm.cilium.io/
+    targetRevision: 1.17.2
+    helm:
+      values: |
+        cni:
+          chainingMode: none
+        ipv4:
+          enabled: true
+        ipv6:
+          enabled: true
+        kubeProxyReplacement: true
+        operator:
+          replicas: 1
+        certgen:
+          # Workaround to keep the generated job around for 30d
+          # as this makes the argo app unsynced
+          ttlSecondsAfterFinished: 2592000
+        hubble:
+          tls:
+            auto:
+              method: cronJob
+          relay:
+              enabled: true
+          ui:
+              enabled: true
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  ignoreDifferences:
+  - group: apps
+    kind: DaemonSet
+    jqPathExpressions:
+    - .spec.template.spec.containers[].env[].valueFrom.resourceFieldRef.divisor
+  project: system
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=true

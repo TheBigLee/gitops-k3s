@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  generators:
+  - clusters: {}
+  template:
+    metadata:
+      name: '{{name}}-cert-manager'
+    spec:
+      project: system
+      source:
+        path: apps/system/cert-manager
+        repoURL: https://github.com/TheBigLee/gitops-k3s.git
+        targetRevision: HEAD
+      destination:
+        server: '{{server}}'
+        namespace: cert-manager
+      syncPolicy:
+        automated:
+          selfHeal: false
+        syncOptions:
+          - CreateNamespace=true
