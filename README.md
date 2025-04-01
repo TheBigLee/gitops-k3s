@@ -93,13 +93,11 @@ kubectl apply -f system/apps/_root.yaml
 
 ## Bootstrap K3s
 
-Using [k3sup](https://github.com/alexellis/k3sup).
-
 ```
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC='--flannel-backend=none --disable-network-policy --disable local-storage --tls-san k3s.bigli.io --cluster-cidr=10.42.0.0/16,2001:cafe:42:0::/56 --service-cidr=10.43.0.0/16,2001:cafe:42:1::/112' sh -
 ```
 
-Then install Cilium: https://docs.cilium.io/en/v1.12/gettingstarted/k3s/
+Then install Cilium: https://docs.cilium.io/en/stable/installation/k3s/
 
 ```
 cilium install --version 1.17.2 --set=ipam.operator.clusterPoolIPv4PodCIDRList="10.42.0.0/16" --helm-set ipv6.enabled=true

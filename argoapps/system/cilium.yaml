@@ -11,6 +11,9 @@ spec:
     repoURL: https://helm.cilium.io/
     targetRevision: 1.17.2
     helm:
+      parameters:
+      - name: ipam.operator.clusterPoolIPv4PodCIDRList
+        value: 10.42.0.0/16
       values: |
         cni:
           chainingMode: none
