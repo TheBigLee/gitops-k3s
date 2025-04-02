@@ -48,7 +48,7 @@ spec:
                  existingSecret: psql-creds
                  secretKeys:
                    adminPasswordKey: adminPassword
-                   userPasswordKey: userPassword
+                   userPasswordKey: db-password
                    replicationPasswordKey: replicationKey
             enabled: true
             primary:
@@ -57,10 +57,9 @@ spec:
                 storageClass: local-path
           externalDatabase:
             type: postgresql
-            existingSecret: enabled
-            secretName: psql-creds
-            usernameKey: username
-            passwordKey: userPassword
+            existingSecret:
+              enabled: true
+              secretName: psql-creds
           persistence:
             enabled: false
     - path: apps/nextcloud
