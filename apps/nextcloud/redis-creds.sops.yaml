@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: redis-creds
+type: Opaque
+stringData:
+    redisPassword: ENC[AES256_GCM,data:kpXxlJ0NQd+4MFOFCD+sf8ylR2KWSTbUrRZNM6LWuWw=,iv:XLIwY6DfyEeSQw+2B6d8oa2UTk0TRbDXJMNxK/DqMFQ=,tag:UIGhmo8FXXKizCJP0yAwCg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1pjrv5skm6p380h8smk4x9sp2m0valkz7ldh4npqrrk55vrwn0veqsvv375
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBENmw2djlwRVFJSnlMUGVF
+            K0xsVkRUd0h6QXN6ZVY1VTVwNW1LMTh3N1VBCjY5MGI4Nk5oWG0raGJFM2ROay93
+            YXk4VE9WS2dSeTZpRHRYQ0RBVTlDWFEKLS0tIFpRM1pyNWV4dnJDVDFEY1U3Vkhy
+            aHpIVmZ0TngrNVRDTStvRnNhUjZPSkUK8Ku6zvTb72AU98k4qoXh+uVcvyYGddbI
+            GYJIyHwWaEUCjTkYjS4vO/IsXpCZmB5YFXwTiL7a+ubIKiM3m0lbAw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-04-02T14:41:23Z"
+    mac: ENC[AES256_GCM,data:RoIduWtgEUmxR3WuuOu7wzVrrDlXvDrjRTQ/yD6/LPiNGPMzBLe7cvZFK5/YY9YHardxHT/KvZKirSYQA6HQ/QxazMAm3565dPwAHRVClSjjwOfcP85VD9+rbmigWUt+tOHTGFPoto2xc1NvUdYLBDQXSa0aI17g4TK1bY/5yPA=,iv:8MLphpXPJe0V5Y4yVpYDVOfsZqpsq11n9sfeL8t6Sjs=,tag:2Nod/0J5GpFR4GT4LWNtsg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.4

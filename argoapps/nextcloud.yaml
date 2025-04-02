@@ -63,6 +63,12 @@ spec:
               persistence:
                 enabled: true
                 storageClass: local-path
+          redis:
+            enabled: true
+            auth:
+              existingSecret: redis-creds
+              existingSecretPasswordKey: redisPassword
+
           externalDatabase:
             type: postgresql
             existingSecret:
