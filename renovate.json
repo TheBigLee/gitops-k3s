@@ -47,7 +47,8 @@
       "paths": [
         "argoapps/system/k8up.yaml",
         "argoapps/system/reloader.yaml",
-        "argoapps/system/kured.yaml"
+        "argoapps/system/kured.yaml",
+        "argoapps/nextcloud.yaml"
       ],
       "automerge": true,
       "requiredStatusChecks": null
