@@ -9,7 +9,7 @@ spec:
   project: apps
   sources:
     - chart: nextcloud/nextcloud
-      repoURL: nextcloud.github.io/helm
+      repoURL: https://nextcloud.github.io/helm/
       targetRevision: 6.6.9
       helm:
         values: |
