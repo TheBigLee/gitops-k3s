@@ -22,7 +22,7 @@ spec:
               passwordKey: password
             extraEnv:
               - name: TRUSTED_PROXIES
-              - value: kube-system.traefik-admin
+                value: kube-system.traefik-admin
           objectStore:
             s3:
               enabled: true
