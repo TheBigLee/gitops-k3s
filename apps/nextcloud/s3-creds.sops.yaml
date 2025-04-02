@@ -8,6 +8,7 @@ stringData:
     accessKey: ENC[AES256_GCM,data:DS/XvOyCFQAXhrj6tElEfUZuWOw=,iv:O6OZvKA5c1rCUn94pnRBsISfLhaebellzfue912hvls=,tag:nnr/QBw4Pz+tBr33nsjWQw==,type:str]
     secretKey: ENC[AES256_GCM,data:6e+wtJDe24nRwcC5iDABuKKBNR4rBl8ww3eOaK8XIWMbBUcHbU8DZA==,iv:hypKoOqSxdn7GZWbIIQFnOdH0NlZfzZVgWiWX0ZNBMc=,tag:mpjyucRFmK6rsJoWfEZjtw==,type:str]
     bucket: ENC[AES256_GCM,data:Yz5rsfreXpeal8Vh/T+S,iv:B3RqqxzwrACE+8JiXugeemTNE9QAhjNxfbEoPMbWRO0=,tag:M5NU4m3G+14YX0txL+jLYg==,type:str]
+    sse_c_key: ENC[AES256_GCM,data:Xrof2TPH6GnbIYUrATt158pCtsnVWyJDqUBRMnM7Tf4=,iv:gI2oQYSD6dU8WMXefQprZDGveze3yHDPaxC8mSYkX5s=,tag:7xAg1mB5ESi+7M/AXyiuMQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -23,8 +24,8 @@ sops:
             aHpIVmZ0TngrNVRDTStvRnNhUjZPSkUK8Ku6zvTb72AU98k4qoXh+uVcvyYGddbI
             GYJIyHwWaEUCjTkYjS4vO/IsXpCZmB5YFXwTiL7a+ubIKiM3m0lbAw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-04-01T20:14:00Z"
-    mac: ENC[AES256_GCM,data:Ae7sIIxR/BiT9BR+a2Vjs8MR9P2I9fTYvDf396s0kMNFdYbcYuI6yYv/i01EBp6Wo0w06Bfs69OvcUlKU2q8OOPSedu8FnsfcUAiIaM6ovhxaxINRx6wU00qBQlAb5DO1e/zkgHxmAlH5c8DZ78aA/e+tceNM13C3J4yRYroN0w=,iv:nuSYFiON42gisp+CsgtjDtlHVI8eaKg0xjiUQJeHvqE=,tag:XmB+vWrLd7ARwme0rxxSUA==,type:str]
+    lastmodified: "2025-04-02T13:50:49Z"
+    mac: ENC[AES256_GCM,data:qVJIyK/mkSHKPA0UwZmCdYGfbDshnUPqSkkYqV6GdYtKEWpuU+zsAJXJvVL/stFSXrGVxtTVG5XtD5nmY6eZha2loAUzl2b66MBRaiubXKx4c2hi8KuYmzGPdmWFJbT3PUhpTXZedheTI1ISHVyxMhmMU77a58jZh4FBkqKdsIs=,iv:i5I+FFCmCyrBizEbypoeUU1QjfPl3t5XQdOBK7STAgM=,tag:J1GDWIx8ukRpWngPssy7Ng==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.4
