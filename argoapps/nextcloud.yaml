@@ -28,7 +28,7 @@ spec:
                     ],
                     'overwrite.cli.url' => 'https://nextcloud.bigli.io',
                     'overwriteprotocol' => 'https',
-                    'overwritehost' => nextcloud.bigli.io,
+                    'overwritehost' => 'nextcloud.bigli.io',
                   ];
             existingSecret:
               enabled: true
