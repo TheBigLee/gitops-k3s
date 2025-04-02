@@ -13,6 +13,8 @@ spec:
       targetRevision: 6.6.9
       helm:
         values: |
+          image:
+            tag: 30.0.8
           nextcloud:
             host: nextcloud.bigli.io
             configs:
@@ -68,7 +70,8 @@ spec:
             auth:
               existingSecret: redis-creds
               existingSecretPasswordKey: redisPassword
-
+          cronjob:
+            enabled: true
           externalDatabase:
             type: postgresql
             existingSecret:
