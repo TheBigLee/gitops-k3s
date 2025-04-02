@@ -20,6 +20,9 @@ spec:
               secretName: nextcloud-creds
               usernameKey: username
               passwordKey: password
+            extraEnv:
+              - name: TRUSTED_PROXIES
+              - value: kube-system.traefik-admin
           objectStore:
             s3:
               enabled: true
@@ -34,7 +37,7 @@ spec:
             enabled: true
             annotations:
               cert-manager.io/cluster-issuer: letsencrypt-prod-desec
-              traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd
+              traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd,nextcloud-nextcloud-redirectregex@kubernetescrd,nextcloud-nextcloud-headers@kubernetescrd
             tls:
             - secretName: ingress-cert
               hosts:
