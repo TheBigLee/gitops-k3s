@@ -62,6 +62,9 @@ spec:
                    replicationPasswordKey: replicationKey
             enabled: true
             primary:
+              resources:
+                limits:
+                  memory: 1Gi
               persistence:
                 enabled: true
                 storageClass: local-path
