@@ -8,7 +8,7 @@ metadata:
 spec:
   project: apps
   sources:
-    - chart: nextcloud/nextcloud
+    - chart: nextcloud
       repoURL: https://nextcloud.github.io/helm/
       targetRevision: 6.6.9
       helm:
