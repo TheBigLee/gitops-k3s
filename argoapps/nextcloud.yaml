@@ -14,7 +14,7 @@ spec:
       helm:
         values: |
           image:
-            tag: 30.0.8
+            tag: 30.0.8-apache
           nextcloud:
             host: nextcloud.bigli.io
             configs:
