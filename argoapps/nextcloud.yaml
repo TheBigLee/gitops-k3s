@@ -64,7 +64,7 @@ spec:
               enabled: true
               secretName: psql-creds
           persistence:
-            enabled: false
+            enabled: true
     - path: apps/nextcloud
       repoURL: https://github.com/TheBigLee/gitops-k3s.git
       targetRevision: HEAD
