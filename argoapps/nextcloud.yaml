@@ -15,14 +15,18 @@ spec:
         values: |
           nextcloud:
             host: nextcloud.bigli.io
+            configs:
+              bigli-nextcloud.config.php: |
+                 <?php
+                    $CONFIG = array (
+                    'trusted_proxies' => ['10.43.0.0/16'],
+                    'maintenance_window_start' => 1,
+                  );
             existingSecret:
               enabled: true
               secretName: nextcloud-creds
               usernameKey: username
               passwordKey: password
-            extraEnv:
-              - name: TRUSTED_PROXIES
-                value: traefik-admin.kube-system
             objectStore:
               s3:
                 region: nbg1
