@@ -23,16 +23,16 @@ spec:
             extraEnv:
               - name: TRUSTED_PROXIES
                 value: kube-system.traefik-admin
-          objectStore:
-            s3:
-              enabled: true
-              existingSecret: s3-creds
-              secretKeys:
-                host: host
-                accessKey: accessKey
-                secretKey: secretKey
-                bucket: bucket
-                sse_c_key: sse_c_key
+            objectStore:
+              s3:
+                enabled: true
+                existingSecret: s3-creds
+                secretKeys:
+                  host: host
+                  accessKey: accessKey
+                  secretKey: secretKey
+                  bucket: bucket
+                  sse_c_key: sse_c_key
           ingress:
             enabled: true
             annotations:
