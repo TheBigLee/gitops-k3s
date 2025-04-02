@@ -80,7 +80,7 @@ spec:
               existingSecret: redis-creds
               existingSecretPasswordKey: redisPassword
             replica:
-              replicaCount: 1
+              replicaCount: 0
           cronjob:
             enabled: true
           externalDatabase:
