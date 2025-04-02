@@ -25,6 +25,7 @@ spec:
                 value: kube-system.traefik-admin
             objectStore:
               s3:
+                region: nbg1
                 enabled: true
                 existingSecret: s3-creds
                 secretKeys:
