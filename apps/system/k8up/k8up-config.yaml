@@ -1,7 +1,0 @@
-k8up:
-  envVars:
-    - name: BACKUP_GLOBALREPOPASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: global-backup-secret
-          key: secret
