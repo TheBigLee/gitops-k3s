@@ -26,6 +26,9 @@ spec:
                     'csrf.optout' => [
                       '/Nextcloud-android', // DAVx
                     ],
+                    ‘overwrite.cli.url’ => ‘https://nextcloud.bigli.io’,
+                    ‘overwriteprotocol’ => ‘https’,
+                    ‘overwritehost’ => nextcloud.bigli.io,
                   ];
             existingSecret:
               enabled: true
