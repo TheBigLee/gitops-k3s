@@ -63,10 +63,10 @@ spec:
           persistence:
             enabled: false
     - path: apps/nextcloud
-      repoURL: https://git.tbrnt.ch/tobru/gitops-zurrli.git
+      repoURL: https://github.com/TheBigLee/gitops-k3s.git
       targetRevision: HEAD
   destination:
-    namespace: forgejo
+    namespace: nextcloud
     server: https://kubernetes.default.svc
   syncPolicy:
     syncOptions:
