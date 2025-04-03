@@ -84,6 +84,29 @@ spec:
             enabled: true
           startupProbe:
             enabled: true
+          collabora:
+            enabled: true
+            aliasgroups:
+              - nextcloud.bigli.io
+            extra_params: --o:ssl.enable=false --o:ssl.termination=true
+            server_name: collabora.bigl.io
+            existingSecret:
+              enabled: true
+              existingSecret: collabora-creds
+            ingress:
+              enabled: true
+              annotations:
+                cert-manager.io/cluster-issuer: letsencrypt-prod-desec
+                traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd
+              hosts:
+                - host: collabora.bigli.io
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+              tls:
+                - secretName: collabora-ingress-cert
+                  hosts:
+                  - collabora.bigli.io
     - path: apps/nextcloud
       repoURL: https://github.com/TheBigLee/gitops-k3s.git
       targetRevision: HEAD
