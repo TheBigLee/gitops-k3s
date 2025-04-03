@@ -16,6 +16,8 @@ spec:
         value: 10.42.0.0/16
       - name: ipam.operator.clusterPoolIPv6PodCIDRList
         value: 2001:cafe:42:0::/56
+      - name: ipam.operator.clusterPoolIPv6MaskSize
+        value: "72" # https://github.com/cilium/cilium/issues/20756#issuecomment-2450328186
       values: |
         cni:
           chainingMode: none
