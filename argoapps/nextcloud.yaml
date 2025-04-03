@@ -86,13 +86,14 @@ spec:
             enabled: true
           collabora:
             enabled: true
-            aliasgroups:
-              - nextcloud.bigli.io
-            extra_params: --o:ssl.enable=false --o:ssl.termination=true
-            server_name: collabora.bigl.io
-            existingSecret:
-              enabled: true
-              existingSecret: collabora-creds
+            collabora:
+              aliasgroups:
+               - nextcloud.bigli.io
+              extra_params: --o:ssl.enable=false --o:ssl.termination=true
+              server_name: collabora.bigl.io
+              existingSecret:
+                enabled: true
+                existingSecret: collabora-creds
             ingress:
               enabled: true
               annotations:
