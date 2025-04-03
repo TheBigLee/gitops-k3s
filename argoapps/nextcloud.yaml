@@ -38,17 +38,6 @@ spec:
               secretName: nextcloud-creds
               usernameKey: username
               passwordKey: password
-            objectStore:
-              s3:
-                region: nbg1
-                enabled: true
-                existingSecret: s3-creds
-                secretKeys:
-                  host: host
-                  accessKey: accessKey
-                  secretKey: secretKey
-                  bucket: bucket
-                  sse_c_key: sse_c_key
           ingress:
             enabled: true
             annotations:
