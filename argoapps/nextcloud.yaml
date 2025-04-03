@@ -87,7 +87,7 @@ spec:
           persistence:
             enabled: true
             annotations:
-                  k8up.io/backup=false
+                  k8up.io/backup: false
           startupProbe:
             enabled: true
     - path: apps/nextcloud
