@@ -1,57 +1,66 @@
-{
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "labels": [
-    "maintenance"
-  ],
-  "enabledManagers": [
-    "kubernetes",
-    "argocd"
-  ],
-  "kubernetes": {
-    "fileMatch": [
-      "^apps/.*\\.yaml$"
-    ]
-  },
-  "argocd": {
-    "fileMatch": [
-      "argoapps/.+\\.yaml$"
-    ]
-  },
-  "major": {
-    "enabled": true
-  },
-  "recreateWhen": "always",
-  "rebaseWhen": "conflicted",
-  "prHourlyLimit": 0,
-  "branchConcurrentLimit": 0,
-  "packageRules": [
-    {
-      "matchUpdateTypes": [
-        "patch",
-        "digest"
-      ],
-      "matchCurrentVersion": "!/^0/",
-      "requiredStatusChecks": null,
-      "automerge": true
+  {
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "labels": [
+      "maintenance"
+    ],
+    "enabledManagers": [
+      "kubernetes",
+      "argocd"
+    ],
+    "kubernetes": {
+      "fileMatch": [
+        "^apps/.*\\.yaml$"
+      ]
     },
-    {
-      "datasources": [
-        "docker",
-        "helm"
-      ],
-      "major": {
-        "enabled": true
+    "argocd": {
+      "fileMatch": [
+        "argoapps/.+\\.yaml$"
+      ]
+    },
+    "major": {
+      "enabled": true
+    },
+    "recreateWhen": "always",
+    "rebaseWhen": "conflicted",
+    "prHourlyLimit": 0,
+    "branchConcurrentLimit": 0,
+    "packageRules": [
+      {
+        "matchUpdateTypes": [
+          "patch",
+          "digest"
+        ],
+        "matchCurrentVersion": "!/^0/",
+        "requiredStatusChecks": null,
+        "automerge": true
+      },
+      {
+        "datasources": [
+          "docker",
+          "helm"
+        ],
+        "major": {
+          "enabled": true
+        }
+      },
+      {
+        "paths": [
+          "argoapps/system/k8up.yaml",
+          "argoapps/system/reloader.yaml",
+          "argoapps/system/kured.yaml",
+          "argoapps/nextcloud.yaml"
+        ],
+        "automerge": true,
+        "requiredStatusChecks": null
       }
-    },
+    ],
+    "regexManagers": [
     {
-      "paths": [
-        "argoapps/system/k8up.yaml",
-        "argoapps/system/reloader.yaml",
-        "argoapps/system/kured.yaml",
-        "argoapps/nextcloud.yaml"
+      "fileMatch": ["argoapps/.+\\.yaml$"],
+      "matchStrings": [
+        "tag:\\s*\"?(?<currentValue>[\\d\\.])\"?"
       ],
-      "automerge": true,
-      "requiredStatusChecks": null
+      "datasourceTemplate": "docker"
     }
   ]
 }
