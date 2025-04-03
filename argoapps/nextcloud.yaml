@@ -61,7 +61,7 @@ spec:
             enabled: true
             primary:
               annotations:
-                k8up.io/backupcommand: "/bin/bash -c 'PGPASSWORD=${POSTGRES_PASSWORD} pg_dump -U ${POSTGRES_USER} -Fc ${POSTGRES_DATABASE}'"
+                k8up.io/backupcommand: '/bin/bash -c \'PGPASSWORD=${POSTGRES_PASSWORD} pg_dump -U ${POSTGRES_USER} -Fc ${POSTGRES_DATABASE}\''
               resources:
                 limits:
                   memory: 1Gi
