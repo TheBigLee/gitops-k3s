@@ -90,7 +90,7 @@ spec:
               aliasgroups:
                 - host: "https://nextcloud.bigli.io:443"
               extra_params: --o:ssl.enable=false --o:ssl.termination=true
-              server_name: collabora.bigl.io
+              server_name: collabora.bigli.io
               existingSecret:
                 enabled: true
                 existingSecret: collabora-creds
