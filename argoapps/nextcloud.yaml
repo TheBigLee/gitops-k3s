@@ -77,6 +77,9 @@ spec:
               existingSecretPasswordKey: redisPassword
             replica:
               replicaCount: 0
+            master:
+              annotations:
+                k8up.io/backup: "false"
           cronjob:
             enabled: true
           externalDatabase:
@@ -86,8 +89,6 @@ spec:
               secretName: psql-creds
           persistence:
             enabled: true
-            annotations:
-                  k8up.io/backup: "false"
           startupProbe:
             enabled: true
     - path: apps/nextcloud
