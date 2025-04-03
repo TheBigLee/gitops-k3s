@@ -30,6 +30,9 @@ spec:
                     'overwriteprotocol' => 'https',
                     'overwritehost' => 'nextcloud.bigli.io',
                   ];
+            extraEnv:
+              - name: "PHP_OPCACHE_MEMORY_CONSUMPTION"
+                value: 256
             existingSecret:
               enabled: true
               secretName: nextcloud-creds
