@@ -32,7 +32,7 @@ spec:
                   ];
             extraEnv:
               - name: "PHP_OPCACHE_MEMORY_CONSUMPTION"
-                value: 256
+                value: "256"
             existingSecret:
               enabled: true
               secretName: nextcloud-creds
