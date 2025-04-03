@@ -38,6 +38,13 @@ spec:
               secretName: nextcloud-creds
               usernameKey: username
               passwordKey: password
+          resources:
+            limits:
+              memory: 3Gi
+              cpu: 3
+            requests:
+              memory: 500Mi
+              cpu: 500m
           ingress:
             enabled: true
             annotations:
@@ -70,13 +77,6 @@ spec:
                 storageClass: local-path
                 annotations:
                   k8up.io/backup: "false"
-            resources:
-              limits:
-                memory: 3Gi
-                cpu: 3
-              requests:
-                memory: 500Mi
-                cpu: 500m
           redis:
             enabled: true
             auth:
