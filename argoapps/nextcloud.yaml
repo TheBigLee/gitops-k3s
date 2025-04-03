@@ -91,7 +91,7 @@ spec:
                 - host: "https://nextcloud.bigli.io:443"
               extra_params: --o:ssl.enable=false --o:ssl.termination=true
               server_name: collabora.bigli.io
-              existingSecret:
+            existingSecret:
                 enabled: true
                 existingSecret: collabora-creds
             ingress:
