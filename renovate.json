@@ -60,6 +60,7 @@
       "matchStrings": [
         "tag:\\s*\"?(?<currentValue>[\\d\\.])\"?"
       ],
+      "depNameTemplate": "docker",
       "datasourceTemplate": "docker"
     }
   ]
