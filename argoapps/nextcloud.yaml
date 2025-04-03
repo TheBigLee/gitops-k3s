@@ -24,7 +24,7 @@ spec:
                     'trusted_proxies' => ['10.43.0.0/16'],
                     'maintenance_window_start' => 1,
                     'csrf.optout' => [
-                      '/Nextcloud-android', // DAVx
+                      '/Nextcloud-android/', // DAVx
                     ],
                     'overwrite.cli.url' => 'https://nextcloud.bigli.io',
                     'overwriteprotocol' => 'https',
