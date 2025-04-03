@@ -69,7 +69,7 @@ spec:
                 enabled: true
                 storageClass: local-path
                 annotations:
-                  k8up.io/backup: false
+                  k8up.io/backup: "false"
           redis:
             enabled: true
             auth:
@@ -87,7 +87,7 @@ spec:
           persistence:
             enabled: true
             annotations:
-                  k8up.io/backup: false
+                  k8up.io/backup: "false"
           startupProbe:
             enabled: true
     - path: apps/nextcloud
