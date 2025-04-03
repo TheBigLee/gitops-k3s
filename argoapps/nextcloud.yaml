@@ -78,8 +78,9 @@ spec:
             replica:
               replicaCount: 0
             master:
-              annotations:
-                k8up.io/backup: "false"
+              persistence:
+                annotations:
+                  k8up.io/backup: "false"
           cronjob:
             enabled: true
           externalDatabase:
