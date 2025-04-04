@@ -105,6 +105,8 @@ spec:
             enabled: true
           metrics:
             enabled: true
+            info:
+              apps: true
             serviceMonitor:
               enabled: true
     - path: apps/nextcloud
