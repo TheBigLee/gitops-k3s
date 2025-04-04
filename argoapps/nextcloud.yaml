@@ -67,6 +67,8 @@ spec:
                    replicationPasswordKey: replicationKey
             enabled: true
             primary:
+              networkPolicy:
+                enabled: false
               podAnnotations:
                 k8up.io/backupcommand: '/bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} pg_dump -U ${POSTGRES_USER} -Fc ${POSTGRES_DATABASE}"'
               resources:
@@ -79,6 +81,8 @@ spec:
                   k8up.io/backup: "false"
           redis:
             enabled: true
+            networkPolicy:
+              enabled: false
             auth:
               existingSecret: redis-creds
               existingSecretPasswordKey: redisPassword
