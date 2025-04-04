@@ -16,6 +16,9 @@ spec:
     repoPasswordSecretRef:
       name: backup-bucket-credentials
       key: password
+  podSecurityContext:
+    fsGroup: 33
+    runAsUser: 33
   backup:
     schedule: '0 1 * * *'
     failedJobsHistoryLimit: 2
