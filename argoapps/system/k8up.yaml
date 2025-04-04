@@ -44,7 +44,7 @@ spec:
                     key: bucket
           metrics:
             serviceMonitor:
-              enabled: false
+              enabled: true
   destination:
     namespace: k8up
     server: https://kubernetes.default.svc
