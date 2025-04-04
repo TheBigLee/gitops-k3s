@@ -29,6 +29,9 @@ spec:
                     - secretName: grafana-ingress-cert
                       hosts:
                       - monitoring.bigli.io
+              prometheus:
+                prometheusSpec:
+                  serviceMonitorSelectorNilUsesHelmValues: false
       destination:
         server: '{{server}}'
         namespace: monitoring
