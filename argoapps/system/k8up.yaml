@@ -42,6 +42,8 @@ spec:
                   secretKeyRef:
                     name: global-s3-credentials
                     key: bucket
+              - name: BACKUP_PROMURL
+                value: pushgateway.k8up.svc:9091
           metrics:
             serviceMonitor:
               enabled: true
