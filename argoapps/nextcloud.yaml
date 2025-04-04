@@ -99,6 +99,10 @@ spec:
             enabled: true
           startupProbe:
             enabled: true
+          metrics:
+            enabled: true
+            serviceMonitor:
+              enabled: true
     - path: apps/nextcloud
       repoURL: https://github.com/TheBigLee/gitops-k3s.git
       targetRevision: HEAD
