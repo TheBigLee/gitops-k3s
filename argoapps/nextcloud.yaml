@@ -33,6 +33,8 @@ spec:
             extraEnv:
               - name: "PHP_OPCACHE_MEMORY_CONSUMPTION"
                 value: "256"
+              - name: "PHP_MEMORY_LIMIT"
+                value: "1GB"
             existingSecret:
               enabled: true
               secretName: nextcloud-creds
