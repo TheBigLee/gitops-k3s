@@ -103,6 +103,7 @@ spec:
             enabled: true
             serviceMonitor:
               enabled: true
+              namespace: monitoring
     - path: apps/nextcloud
       repoURL: https://github.com/TheBigLee/gitops-k3s.git
       targetRevision: HEAD
