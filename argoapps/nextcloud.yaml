@@ -104,6 +104,8 @@ spec:
             serviceMonitor:
               enabled: true
               namespace: monitoring
+              labels:
+                release: in-cluster-prometheus
     - path: apps/nextcloud
       repoURL: https://github.com/TheBigLee/gitops-k3s.git
       targetRevision: HEAD
