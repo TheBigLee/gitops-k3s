@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: media-data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  - ReadWriteMany
+  - ReadOnlyMany
+  capacity:
+    storage: 16Ti
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: plex-media
+    namespace: jellyfin
+  hostPath:
+    path: /srv/home-storage/media_data/
+    type: ""
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  volumeMode: Filesystem
