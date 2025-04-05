@@ -9,11 +9,6 @@ spec:
   - ReadOnlyMany
   capacity:
     storage: 16Ti
-  claimRef:
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    name: plex-media
-    namespace: jellyfin
   hostPath:
     path: /srv/home-storage/media_data/
     type: ""
