@@ -3,6 +3,11 @@ kind: Middleware
 metadata:
   name: redirect-https
 spec:
+  headers:
+    #HSTS
+    stsIncludeSubdomains: true
+    stsPreload: true
+    stsSeconds: 31536000
   redirectScheme:
     scheme: https
     permanent: true

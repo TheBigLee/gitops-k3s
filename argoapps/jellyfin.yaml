@@ -17,7 +17,7 @@ spec:
             enabled: true
             annotations:
               cert-manager.io/cluster-issuer: letsencrypt-prod-desec
-              traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd,nextcloud-nextcloud-redirectregex@kubernetescrd,nextcloud-nextcloud-headers@kubernetescrd
+              traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd
             hosts: 
               - host: jellyfin.bigli.io
                 paths:
