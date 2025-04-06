@@ -27,6 +27,9 @@ spec:
             - secretName: ingress-cert
               hosts:
               - jellyfin.bigli.io
+          securityContext:
+            runAsUser: 1001
+            fsGroup: 1001
           metrics:
             enabled: false
             serviceMonitor:
