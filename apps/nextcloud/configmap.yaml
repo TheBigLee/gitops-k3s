@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cron-config
+data:
+  www-data: |
+    */5 * * * * php -f /var/www/html/cron.php
+    */30 * * * * php -f /var/www/html/occ preview:generate-all
