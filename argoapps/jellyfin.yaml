@@ -28,7 +28,7 @@ spec:
               hosts:
               - jellyfin.bigli.io
           metrics:
-            enabled: true
+            enabled: false
             serviceMonitor:
               enabled: true
           persistence:
