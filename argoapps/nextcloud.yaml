@@ -40,6 +40,13 @@ spec:
               secretName: nextcloud-creds
               usernameKey: username
               passwordKey: password
+            extraVolumes:
+              - name: cron-config
+                configMap:
+                  name: cron-config
+            extraVolumeMounts:
+              - name: cron-config
+                mountPath: /var/spool/cron/crontabs/
           resources:
             limits:
               memory: 3Gi
