@@ -18,6 +18,8 @@ spec:
           helm:
             values: |
               grafana:
+                persistence:
+                  enabled: true
                 ingress:
                   enabled: true
                   annotations:
@@ -32,6 +34,14 @@ spec:
               prometheus:
                 prometheusSpec:
                   serviceMonitorSelectorNilUsesHelmValues: false
+                  retention: 2w
+                  retentionSize: 20Gi  
+                  storageSpec:
+                    storageClassName: local-path
+                    resources:
+                      requests:
+                        storage: 40Gi
+
       destination:
         server: '{{server}}'
         namespace: monitoring
