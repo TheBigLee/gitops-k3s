@@ -35,7 +35,7 @@ spec:
                 prometheusSpec:
                   serviceMonitorSelectorNilUsesHelmValues: false
                   retention: 2w
-                  retentionSize: 20Gi  
+                  retentionSize: 20G  
                   storageSpec:
                   volumeClaimTemplate:
                     spec:
