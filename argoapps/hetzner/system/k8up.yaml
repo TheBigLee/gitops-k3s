@@ -7,7 +7,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   sources:
-    - path: apps/system/k8up
+    - path: apps/hetzner/_system/k8up
       repoURL: https://github.com/TheBigLee/gitops-k3s.git
       targetRevision: HEAD
     - chart: k8up

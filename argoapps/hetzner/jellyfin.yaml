@@ -38,7 +38,7 @@ spec:
             media:
               existingClaim: jellyfin-media
           
-    - path: apps/jellyfin
+    - path: apps/k3s/jellyfin
       repoURL: https://github.com/TheBigLee/gitops-k3s.git
       targetRevision: HEAD
   destination:

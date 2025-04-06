@@ -1,20 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: kube-system
+  name: cert-manager
   namespace: argocd
 spec:
   generators:
   - clusters: {}
   template:
     metadata:
-      name: '{{name}}-kube-system'
+      name: '{{name}}-cert-manager'
     spec:
       project: system
       source:
-        path: 'apps/system/kube-system'
+        path: apps/common/cert-manager
         repoURL: https://github.com/TheBigLee/gitops-k3s.git
         targetRevision: HEAD
       destination:
         server: '{{server}}'
-        namespace: kube-system
+        namespace: cert-manager
+      syncPolicy:
+        automated:
+          selfHeal: false
+        syncOptions:
+          - CreateNamespace=true
