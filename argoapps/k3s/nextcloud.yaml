@@ -17,6 +17,9 @@ spec:
             tag: 30.0.8-fpm-alpine
           nginx:
             enabled: true
+            securityContext:
+              runAsUser: 82
+              runAsGroup: 82
           nextcloud:
             host: nextcloud.bigli.io
             configs:
@@ -49,6 +52,9 @@ spec:
             extraVolumeMounts:
               - name: cron-config
                 mountPath: /var/spool/cron/crontabs/
+            securityContext:
+              runAsUser: 82
+              runAsGroup: 82
           resources:
             limits:
               memory: 3Gi
@@ -105,6 +111,9 @@ spec:
                   k8up.io/backup: "false"
           cronjob:
             enabled: true
+            securityContext:
+              runAsUser: 82
+              runAsGroup: 82
           externalDatabase:
             type: postgresql
             existingSecret:
