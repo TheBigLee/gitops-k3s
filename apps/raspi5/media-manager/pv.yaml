@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: media-data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  - ReadWriteMany
+  - ReadOnlyMany
+  capacity:
+    storage: 16Ti
+  hostPath:
+    path: /srv/my_book/media_data/
+    type: ""
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: media-data
+  namespace: media-manager
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 16Ti
+  storageClassName: local-storage
+  volumeMode: Filesystem
+  volumeName: media-data
