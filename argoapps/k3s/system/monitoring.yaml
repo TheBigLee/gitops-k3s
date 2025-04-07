@@ -31,12 +31,12 @@ spec:
             retention: 2w
             retentionSize: 20GiB  
             storageSpec:
-            volumeClaimTemplate:
-              spec:
-                storageClassName: local-path
-                resources:
-                  requests:
-                    storage: 40Gi
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: local-path
+                  resources:
+                    requests:
+                      storage: 40Gi
   destination:
     namespace: monitoring
     server: https://kubernetes.default.svc
