@@ -14,20 +14,38 @@ spec:
       storage: "1Gi"
   storageClassName: "local-path"
 ---
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolume
 metadata:
   name: incomplete-downloads
-  labels:
-    app.kubernetes.io/instance: sabnzbd
-    app.kubernetes.io/name: sabnzbd
 spec:
   accessModes:
-    - "ReadWriteOnce"
+  - ReadWriteOnce
+  - ReadWriteMany
+  - ReadOnlyMany
+  capacity:
+    storage: 100Gi
+  hostPath:
+    path: /srv/my_book/incomplete_downloads/
+    type: ""
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: incomplete-downloads
+  namespace: media-manager
+spec:
+  accessModes:
+  - ReadWriteMany
   resources:
     requests:
-      storage: "50Gi"
-  storageClassName: "local-path"
+      storage: 100Gi
+  storageClassName: local-storage
+  volumeMode: Filesystem
+  volumeName: incomplete-downloads
 ---
 apiVersion: v1
 kind: Service
