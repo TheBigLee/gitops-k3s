@@ -32,7 +32,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: apps-home
+  name: apps-raspi5
   namespace: argocd
 spec:
   clusterResourceWhitelist:
