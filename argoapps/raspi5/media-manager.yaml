@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: apps
+  project: apps-raspi5
   sources:
     - path: apps/raspi5/media-manager
       repoURL: https://github.com/TheBigLee/gitops-k3s.git
