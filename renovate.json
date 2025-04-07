@@ -54,13 +54,13 @@
         "requiredStatusChecks": null
       }
     ],
-    "regexManagers": [
+    "customManagers": [
     {
       "fileMatch": ["argoapps/.+\\.yaml$"],
       "matchStrings": [
         "tag:\\s*\"?(?<currentValue>[\\d\\.]+-fpm)\"?"
       ],
-      "depNameTemplate": "docker",
+      "depNameTemplate": "nextcloud",
       "datasourceTemplate": "docker"
     }
   ]
