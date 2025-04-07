@@ -24,7 +24,7 @@ spec:
                   enabled: true
                   annotations:
                     cert-manager.io/cluster-issuer: letsencrypt-prod-desec
-                    traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd
+                    traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd,kube-system-https-headers@kubernetescrd
                   hosts:
                     - monitoring.bigli.io
                   tls:
