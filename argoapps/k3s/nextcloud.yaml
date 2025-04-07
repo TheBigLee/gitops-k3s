@@ -14,7 +14,7 @@ spec:
       helm:
         values: |
           image:
-            tag: 30.0.8-fpm
+            tag: 30.0.8-fpm-alpine
           nginx:
             enabled: true
           nextcloud:
