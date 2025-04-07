@@ -28,3 +28,19 @@ spec:
     name: k3s
   sourceRepos:
   - '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: apps-home
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: https://raspi5.bigli.io:6443
+    name: raspi5
+  sourceRepos:
+  - '*'
