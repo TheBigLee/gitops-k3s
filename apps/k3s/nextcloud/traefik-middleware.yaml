@@ -25,3 +25,14 @@ spec:
     permanent: true
     regex: "https://(.*)/.well-known/(?:card|cal)dav"
     replacement: "https://$${1}/remote.php/dav"
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: nextcloud-redirectregex2
+  namespace: nextcloud
+spec:
+  redirectRegex:
+    permanent: true
+    regex: "https://([^/]*)(/.well-known[^#]*)"
+    replacement: "https://$${1}/index.php$${2}"
