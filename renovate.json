@@ -58,7 +58,7 @@
     {
       "fileMatch": ["argoapps/.+\\.yaml$"],
       "matchStrings": [
-        "tag:\\s*\"?(?<currentValue>[\\d\\.])\"?"
+        "tag:\\s*\"?(?<currentValue>[\\d\\.]+-fpm)\"?"
       ],
       "depNameTemplate": "docker",
       "datasourceTemplate": "docker"
