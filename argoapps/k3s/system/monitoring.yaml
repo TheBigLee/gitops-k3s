@@ -1,43 +1,42 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
   name: prometheus
   namespace: argocd
 spec:
   project: system
-  sources:
-    - chart: kube-prometheus-stack
-      repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 70.4.1
-      helm:
-        values: |
-          grafana:
-            persistence:
-              enabled: true
-            ingress:
-              enabled: true
-              annotations:
-                cert-manager.io/cluster-issuer: letsencrypt-prod-desec
-                traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd,kube-system-hsts-headers@kubernetescrd
-              hosts:
+  source:
+    chart: kube-prometheus-stack
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 70.4.1
+    helm:
+      values: |
+        grafana:
+          persistence:
+            enabled: true
+          ingress:
+            enabled: true
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt-prod-desec
+              traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd,kube-system-hsts-headers@kubernetescrd
+            hosts:
+              - monitoring.bigli.io
+            tls:
+              - secretName: grafana-ingress-cert
+                hosts:
                 - monitoring.bigli.io
-              tls:
-                - secretName: grafana-ingress-cert
-                  hosts:
-                  - monitoring.bigli.io
-          prometheus:
-            prometheusSpec:
-              serviceMonitorSelectorNilUsesHelmValues: false
-              retention: 2w
-              retentionSize: 20GiB  
-              storageSpec:
-              volumeClaimTemplate:
-                spec:
-                  storageClassName: local-path
-                  resources:
-                    requests:
-                      storage: 40Gi
-
+        prometheus:
+          prometheusSpec:
+            serviceMonitorSelectorNilUsesHelmValues: false
+            retention: 2w
+            retentionSize: 20GiB  
+            storageSpec:
+            volumeClaimTemplate:
+              spec:
+                storageClassName: local-path
+                resources:
+                  requests:
+                    storage: 40Gi
   destination:
     namespace: monitoring
     server: https://kubernetes.default.svc
