@@ -23,7 +23,7 @@ spec:
               bigli-nextcloud.config.php: |
                 <?php
                   $CONFIG = [
-                    'trusted_proxies' => ['10.43.0.0/16', '10.42.0.0/16],
+                    'trusted_proxies' => ['10.43.0.0/16', '10.42.0.0/16'],
                     'maintenance_window_start' => 1,
                     'csrf.optout' => [
                       '/Nextcloud-android/', // DAVx
