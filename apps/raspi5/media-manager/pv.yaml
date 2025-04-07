@@ -59,7 +59,7 @@ spec:
   - ReadWriteMany
   resources:
     requests:
-      storage: 16Ti
+      storage: 100Gi
   storageClassName: local-storage
   volumeMode: Filesystem
   volumeName: media-downloads
