@@ -14,8 +14,10 @@ spec:
       helm:
         values: |
           image:
-            flavor: fpm
+            flavor: fpm-alpine
             tag: 30.0.8
+          nginx:
+            enabled: true
           nextcloud:
             host: nextcloud.bigli.io
             configs:
