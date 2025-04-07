@@ -30,3 +30,36 @@ spec:
   storageClassName: local-storage
   volumeMode: Filesystem
   volumeName: media-data
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: media-downloads
+spec:
+  accessModes:
+  - ReadWriteOnce
+  - ReadWriteMany
+  - ReadOnlyMany
+  capacity:
+    storage: 100Gi
+  hostPath:
+    path: /srv/my_book/media_downloads/
+    type: ""
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: media-downloads
+  namespace: media-manager
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 16Ti
+  storageClassName: local-storage
+  volumeMode: Filesystem
+  volumeName: media-downloads
