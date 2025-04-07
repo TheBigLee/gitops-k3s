@@ -15,39 +15,6 @@ spec:
   storageClassName: "local-path"
 ---
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: incomplete-downloads
-spec:
-  accessModes:
-  - ReadWriteOnce
-  - ReadWriteMany
-  - ReadOnlyMany
-  capacity:
-    storage: 100Gi
-  hostPath:
-    path: /srv/my_book/incomplete_downloads/
-    type: ""
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-storage
-  volumeMode: Filesystem
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: incomplete-downloads
-  namespace: media-manager
-spec:
-  accessModes:
-  - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
-  storageClassName: local-storage
-  volumeMode: Filesystem
-  volumeName: incomplete-downloads
----
-apiVersion: v1
 kind: Service
 metadata:
   name: sabnzbd
@@ -111,8 +78,6 @@ spec:
               mountPath: /config
             - name: downloads
               mountPath: /downloads
-            - name: incomplete-downloads
-              mountPath: /incomplete-downloads
           livenessProbe:
             tcpSocket:
               port: 8080
@@ -141,9 +106,6 @@ spec:
         - name: downloads
           persistentVolumeClaim:
             claimName: media-downloads
-        - name: incomplete-downloads
-          persistentVolumeClaim:
-            claimName: incomplete-downloads
 ---
 # Source: nzbget/templates/common.yaml
 apiVersion: networking.k8s.io/v1
