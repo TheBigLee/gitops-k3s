@@ -3,9 +3,11 @@
     "labels": [
       "maintenance"
     ],
+    "dependencyDashboard": true,
     "enabledManagers": [
       "kubernetes",
-      "argocd"
+      "argocd",
+      "regex"
     ],
     "kubernetes": {
       "fileMatch": [
@@ -45,23 +47,48 @@
       },
       {
         "paths": [
-          "argoapps/system/k8up.yaml",
-          "argoapps/system/reloader.yaml",
-          "argoapps/system/kured.yaml",
-          "argoapps/nextcloud.yaml"
+          "argoapps/k3s/system/k8up.yaml",
+          "argoapps/k3s/system/reloader.yaml",
+          "argoapps/k3s/system/kured.yaml",
+          "argoapps/k3s/nextcloud.yaml"
         ],
         "automerge": true,
         "requiredStatusChecks": null
+      },
+      {
+        "matchPackageNames": ["nextcloud"],
+        "matchPaths": ["argoapps/k3s/nextcloud.yaml"],
+        "matchManagers": ["regex"],
+        "matchDatasources": ["docker"],
+        "major": {
+          "enabled": true
+        },
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "automerge": true
+      },
+      {
+        "matchPackageNames": ["nextcloud"],
+        "matchPaths": ["argoapps/k3s/nextcloud.yaml"],
+        "matchManagers": ["regex"],
+        "matchDatasources": ["docker"],
+        "matchUpdateTypes": ["major"],
+        "automerge": false
       }
     ],
-    "regexManagers": [
+    "customManagers": [
     {
-      "fileMatch": ["argoapps/.+\\.yaml$"],
+      "fileMatch": ["argoapps/k3s/nextcloud.yaml"],
       "matchStrings": [
-        "tag:\\s*\"?(?<currentValue>[\\d\\.])\"?"
+        "tag:\\s*\"?(?<currentValue>[\\d\\.]+-fpm)\"?"
       ],
-      "depNameTemplate": "docker",
-      "datasourceTemplate": "docker"
+      "depNameTemplate": "nextcloud",
+      "datasourceTemplate": "docker",
+      "packageNameTemplate": "nextcloud"
     }
   ]
 }
