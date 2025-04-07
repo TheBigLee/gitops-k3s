@@ -52,7 +52,7 @@ kind: Service
 metadata:
   labels:
     app: traefik
-  name: traefik-admin
+  name: traefik
 spec:
   internalTrafficPolicy: Cluster
   ipFamilyPolicy: SingleStack
