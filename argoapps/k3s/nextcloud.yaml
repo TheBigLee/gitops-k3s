@@ -14,6 +14,7 @@ spec:
       helm:
         values: |
           image:
+            # renovate: datasource=docker package=nextcloud
             tag: 30.0.8-fpm
           nginx:
             enabled: true

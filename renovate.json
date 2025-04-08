@@ -53,15 +53,5 @@
         "automerge": true,
         "requiredStatusChecks": null
       }
-    ],
-    "customManagers": [
-    {
-      "fileMatch": ["argoapps/.+\\.yaml$"],
-      "matchStrings": [
-        "tag:\\s*\"?(?<currentValue>[\\d\\.]+-fpm)\"?"
-      ],
-      "depNameTemplate": "nextcloud",
-      "datasourceTemplate": "docker"
-    }
-  ]
+    ]
 }
