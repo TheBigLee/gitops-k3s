@@ -5,7 +5,8 @@
     ],
     "enabledManagers": [
       "kubernetes",
-      "argocd"
+      "argocd",
+      "docker"
     ],
     "kubernetes": {
       "fileMatch": [
