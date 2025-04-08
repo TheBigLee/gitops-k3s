@@ -61,7 +61,7 @@
         "matchManagers": ["regex"],
         "matchDatasources": ["docker"],
         "major": {
-          "enabled": false
+          "enabled": true
         },
         "matchUpdateTypes": [
           "minor",
