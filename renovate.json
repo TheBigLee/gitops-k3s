@@ -5,7 +5,8 @@
     ],
     "enabledManagers": [
       "kubernetes",
-      "argocd"
+      "argocd",
+      "regex"
     ],
     "kubernetes": {
       "fileMatch": [
@@ -54,7 +55,7 @@
         "requiredStatusChecks": null
       }  
     ],
-    "regexManagers": [
+    "customManagers": [
     {
       "fileMatch": ["argoapps/k3s/nextcloud.yaml"],
       "matchStrings": [
