@@ -17,11 +17,6 @@
         "argoapps/.+\\.yaml$"
       ]
     },
-    "helm-values": {
-      "fileMatch": [
-        "argoapps/.+\\.yaml$"
-      ]
-    },
     "major": {
       "enabled": true
     },
