@@ -5,7 +5,8 @@
     ],
     "enabledManagers": [
       "kubernetes",
-      "argocd"
+      "argocd",
+      "helm-values"
     ],
     "kubernetes": {
       "fileMatch": [
@@ -13,6 +14,11 @@
       ]
     },
     "argocd": {
+      "fileMatch": [
+        "argoapps/.+\\.yaml$"
+      ]
+    },
+    "helm-values": {
       "fileMatch": [
         "argoapps/.+\\.yaml$"
       ]
