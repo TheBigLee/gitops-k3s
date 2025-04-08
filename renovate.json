@@ -5,8 +5,7 @@
     ],
     "enabledManagers": [
       "kubernetes",
-      "argocd",
-      "docker"
+      "argocd"
     ],
     "kubernetes": {
       "fileMatch": [
@@ -46,10 +45,10 @@
       },
       {
         "paths": [
-          "argoapps/system/k8up.yaml",
-          "argoapps/system/reloader.yaml",
-          "argoapps/system/kured.yaml",
-          "argoapps/nextcloud.yaml"
+          "argoapps/k3s/system/k8up.yaml",
+          "argoapps/k3s/system/reloader.yaml",
+          "argoapps/k3s/system/kured.yaml",
+          "argoapps/k3s/nextcloud.yaml"
         ],
         "automerge": true,
         "requiredStatusChecks": null
