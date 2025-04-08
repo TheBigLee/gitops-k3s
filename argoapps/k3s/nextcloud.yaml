@@ -14,7 +14,7 @@ spec:
       helm:
         values: |
           image:
-            # renovate: datasource=docker package=nextcloud
+            # renovate: datasource=docker package=nextcloud versioning=regex:^\\d+\\.\\d+\\.\\d+-fpm$
             tag: 30.0.8-fpm
           nginx:
             enabled: true
