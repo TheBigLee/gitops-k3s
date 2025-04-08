@@ -5,8 +5,7 @@
     ],
     "enabledManagers": [
       "kubernetes",
-      "argocd",
-      "helm-values"
+      "argocd"
     ],
     "kubernetes": {
       "fileMatch": [
@@ -59,5 +58,16 @@
         "automerge": true,
         "requiredStatusChecks": null
       }
-    ]
+    ],
+    "regexManagers": [
+    {
+      "fileMatch": ["argoapps/k3s/nextcloud.yaml"],
+      "matchStrings": [
+        "tag:\\s*\"?(?<currentValue>[\\d\\.]+-fpm)\"?"
+      ],
+      "depNameTemplate": "nextcloud",
+      "datasourceTemplate": "docker",
+      "packageNameTemplate": "nextcloud"
+    }
+  ]
 }
