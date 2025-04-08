@@ -3,6 +3,7 @@
     "labels": [
       "maintenance"
     ],
+    "dependencyDashboard": true,
     "enabledManagers": [
       "kubernetes",
       "argocd",
@@ -53,7 +54,23 @@
         ],
         "automerge": true,
         "requiredStatusChecks": null
-      }  
+      },
+      {
+        "matchPackageNames": ["nextcloud"],
+        "matchPaths": ["argoapps/k3s/nextcloud.yaml"],
+        "matchManagers": ["regex"],
+        "matchDatasources": ["docker"],
+        "major": {
+          "enabled": false
+        },
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "automerge": true
+      }
     ],
     "customManagers": [
     {
