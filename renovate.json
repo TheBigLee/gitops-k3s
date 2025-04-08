@@ -52,15 +52,17 @@
         ],
         "automerge": true,
         "requiredStatusChecks": null
-      },
-      {
-        "managers": ["argocd"],
-        "matchDatasources": ["docker"],
-        "matchPackageNames": ["nextcloud"],
-        "matchPaths": ["argoapps/k3s/nextcloud.yaml"],
-        "matchUpdateTypes": ["patch", "minor", "digest"],
-        "automerge": true,
-        "requiredStatusChecks": null
-      }
-    ]
+      }  
+    ],
+    "regexManagers": [
+    {
+      "fileMatch": ["argoapps/k3s/nextcloud.yaml"],
+      "matchStrings": [
+        "tag:\\s*\"?(?<currentValue>[\\d\\.]+-fpm)\"?"
+      ],
+      "depNameTemplate": "nextcloud",
+      "datasourceTemplate": "docker",
+      "packageNameTemplate": "nextcloud"
+    }
+  ]
 }
