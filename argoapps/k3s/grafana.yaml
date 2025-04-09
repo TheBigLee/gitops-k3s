@@ -27,7 +27,7 @@ spec:
                 - graphs.bigli.io
                 secretName: graphs-bigli-io-cert
             annotations:
-              ccert-manager.io/cluster-issuer: letsencrypt-prod-desec
+              cert-manager.io/cluster-issuer: letsencrypt-prod-desec
               traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd,kube-system-hsts-headers@kubernetescrd
           persistence:
             enabled: true
