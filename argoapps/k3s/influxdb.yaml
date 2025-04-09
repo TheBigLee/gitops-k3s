@@ -26,6 +26,7 @@ spec:
           ingress:
             enabled: true
             tls: true
+            className: traefik
             secretName: influx-bigli-io-cert
             hostname: influx.bigli.io
             annotations:
