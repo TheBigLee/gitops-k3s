@@ -4,4 +4,3 @@ resources:
   - k3s-traefik-middleware.yaml
   - unattended-upgrades.yaml
   - kube-cleanup-operator.yaml
-  - k3s-traefik-config.yaml
