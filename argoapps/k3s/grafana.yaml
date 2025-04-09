@@ -28,7 +28,7 @@ spec:
                 secretName: graphs-bigli-io-cert
             annotations:
               ccert-manager.io/cluster-issuer: letsencrypt-prod-desec
-              traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd,kube-system-hsts-headers@kubernetescrd,nextcloud-nextcloud-redirectregex@kubernetescrd,nextcloud-nextcloud-redirectregex2@kubernetescrd
+              traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd,kube-system-hsts-headers@kubernetescrd
           persistence:
             enabled: true
             size: 1Gi
