@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - joex/deployment.yaml
+  - joex/service.yaml
+  - postgres/statefulset.yaml
+  - postgres/service.yaml
+  - restserver/ingress.yaml
+  - restserver/service.yaml
+  - restserver/deployment.yaml
+  - solr/service.yaml
+  - solr/statefulset.yaml
+  - configmap-docspellconf.yaml
+  - configmap-env.yaml
+generators:
+  - secret-generator.yaml
