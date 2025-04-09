@@ -10,6 +10,16 @@ spec:
     chart: kubernetes-dashboard
     repoURL: https://kubernetes.github.io/dashboard/
     targetRevision: 7.11.1
+    helm:
+      values: |
+        kong:
+          proxy:
+            http:
+              enabled: true
+      parameters:
+      - name: kong.admin.tls.enabled
+        value: "false"
+
   destination:
     namespace: dashboard
     server: https://kubernetes.default.svc
