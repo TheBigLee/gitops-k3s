@@ -22,7 +22,7 @@ spec:
                 secretKeyRef:
                   name: immich-postgres-user
                   key: password
-            DB_HOSTNAME: immich-postgres-rw.immich.svc
+            DB_HOSTNAME: immich-postgres-rw
             DB_USERNAME:
               valueFrom:
                 secretKeyRef:
