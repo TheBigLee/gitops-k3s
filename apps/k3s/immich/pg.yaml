@@ -30,4 +30,4 @@ spec:
 
   storage:
     size: 4Gi
-    storageClass: immich-postgres
+    storageClass: local-path
