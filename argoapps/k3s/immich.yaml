@@ -12,7 +12,7 @@ spec:
       repoURL: https://github.com/TheBigLee/gitops-k3s.git
       targetRevision: HEAD
   destination:
-    namespace: nextcloud
+    namespace: immich
     server: https://kubernetes.default.svc
   syncPolicy:
     syncOptions:
