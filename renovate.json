@@ -89,6 +89,15 @@
       "depNameTemplate": "nextcloud",
       "datasourceTemplate": "docker",
       "packageNameTemplate": "nextcloud"
+    },
+    {
+      "fileMatch": ["argoapps/k3s/immich.yaml"],
+      "matchStrings": [
+        "tag:\\s*\"?(?<currentValue>[\\d\\.])\"?"
+      ],
+      "depNameTemplate": "immich",
+      "datasourceTemplate": "docker",
+      "packageNameTemplate": "immich"
     }
   ]
 }
