@@ -38,6 +38,10 @@ spec:
             architecture: standalone
             auth:
               enabled: false
+            master:
+             persistence:
+                annotations:
+                  k8up.io/backup: "false"
           server:
             enabled: true
             ingress:
