@@ -95,9 +95,7 @@
       "matchStrings": [
         "tag:\\s*\"?(?<currentValue>[\\d\\.])\"?"
       ],
-      "depNameTemplate": "immich",
-      "datasourceTemplate": "docker",
-      "packageNameTemplate": "immich"
+      "depNameTemplate": "immich-app/immich"
     }
   ]
 }
