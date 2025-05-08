@@ -13,8 +13,6 @@ spec:
       targetRevision: 0.9.3
       helm:
         values: |
-          image:
-            tag: v1.132.3
           envFrom:
             - secretRef:
                 name: immich-postgres-user
