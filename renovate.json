@@ -78,6 +78,13 @@
         "matchDatasources": ["docker"],
         "matchUpdateTypes": ["major"],
         "automerge": false
+      },
+      {
+        "matchPackageNames": ["immich"],
+        "matchPaths": ["argoapps/k3s/immich.yaml"],
+        "matchManagers": ["regex"],
+        "matchDatasources": ["github-releases"],
+        "automerge": false
       }
     ],
     "customManagers": [
@@ -95,7 +102,8 @@
       "matchStrings": [
         "tag:\\s*\"?(?<currentValue>[\\d\\.])\"?"
       ],
-      "depNameTemplate": "immich-app/immich"
+      "depNameTemplate": "immich-app/immich",
+      "datasourceTemplate": "github-releases"
     }
   ]
 }
