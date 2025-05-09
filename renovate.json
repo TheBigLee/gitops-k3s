@@ -80,7 +80,6 @@
         "automerge": false
       },
       {
-        "matchPackageNames": ["immich"],
         "matchPaths": ["argoapps/k3s/immich.yaml"],
         "matchManagers": ["regex"],
         "matchDatasources": ["github-releases"],
