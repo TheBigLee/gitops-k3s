@@ -6,12 +6,11 @@ metadata:
     k8up.io/backupcommand: '/bin/bash -c "pg_dump -Fc -d immich"'
 spec:
   # At the time of writing, immich is only compatible with pgvecto.rs <0.4. Latest postgres image with that version is 16.5.
-  imageName: ghcr.io/thebiglee/cloudnative-vectorchord:16.5-vectorchord0.3.0-pgvectorv0.3.0
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.3.0
   instances: 1
 
   postgresql:
     shared_preload_libraries:
-      - "vectors.so"
       - "vchord.so"
 
   managed:
@@ -28,7 +27,6 @@ spec:
         name: immich-postgres-user
       postInitSQL:
         - CREATE EXTENSION IF NOT EXISTS "vchord" CASCADE;"
-        - CREATE EXTENSION IF NOT EXISTS "vectors";
         - CREATE EXTENSION IF NOT EXISTS "cube" CASCADE;
         - CREATE EXTENSION IF NOT EXISTS "earthdistance" CASCADE;
 
