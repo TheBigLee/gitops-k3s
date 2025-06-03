@@ -6,7 +6,7 @@ metadata:
     k8up.io/backupcommand: '/bin/bash -c "pg_dump -Fc -d immich"'
 spec:
   # At the time of writing, immich is only compatible with pgvecto.rs <0.4. Latest postgres image with that version is 16.5.
-  imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.5-v0.3.0
+  imageName: ghcr.io/thebiglee/cloudnative-vectorchord:16.5-vectorchord0.4.2-pgvectorv0.3.0
   instances: 1
 
   postgresql:
