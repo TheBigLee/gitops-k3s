@@ -80,11 +80,25 @@
         "automerge": false
       },
       {
+        "matchPackageNames": ["immich-app/immich"],
         "matchPaths": ["argoapps/k3s/immich.yaml"],
         "matchManagers": ["regex"],
         "matchDatasources": ["github-releases"],
-        "automerge": false
+        "matchUpdateTypes": ["major"],
+        "automerge": false,
+        "description": "Prevent automerge of major updates for immich"
+      },
+      {
+        "matchPackageNames": ["immich-app/immich"],
+        "matchPaths": ["argoapps/k3s/immich.yaml"],
+        "matchManagers": ["regex"],
+        "matchDatasources": ["github-releases"],
+        "matchUpdateTypes": ["minor", "patch"],
+        "automerge": true,
+        "requiredStatusChecks": null,
+        "description": "Automerge non-major immich updates"
       }
+
     ],
     "customManagers": [
     {
@@ -99,10 +113,11 @@
     {
       "fileMatch": ["argoapps/k3s/immich.yaml"],
       "matchStrings": [
-        "tag:\\s*\"?(?<currentValue>[\\d\\.])\"?"
+        "tag:\\s*\"?(?<currentValue>v\\d+\\.\\d+\\.\\d+)\"?"
       ],
       "depNameTemplate": "immich-app/immich",
-      "datasourceTemplate": "github-releases"
+      "datasourceTemplate": "github-releases",
+      "packageNameTemplate": "immich-app/immich"
     }
   ]
 }
