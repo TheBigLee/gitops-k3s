@@ -14,7 +14,7 @@ spec:
       helm:
         values: |
           image:
-            tag: v1.136.0
+            tag: v1.137.0
           envFrom:
             - secretRef:
                 name: immich-postgres-user
