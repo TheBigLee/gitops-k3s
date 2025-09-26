@@ -8,6 +8,7 @@ spec:
   # At the time of writing, immich is only compatible with pgvecto.rs <0.4. Latest postgres image with that version is 16.5.
   imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.3.0
   instances: 1
+  enablePDB: false
 
   postgresql:
     shared_preload_libraries:

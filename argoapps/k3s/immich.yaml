@@ -41,7 +41,9 @@ spec:
             auth:
               enabled: false
             master:
-             persistence:
+              pdb:
+                create: false
+              persistence:
                 annotations:
                   k8up.io/backup: "false"
           server:
