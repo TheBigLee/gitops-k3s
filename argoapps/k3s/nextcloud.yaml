@@ -78,6 +78,8 @@ spec:
                    replicationPasswordKey: replicationKey
             enabled: true
             primary:
+              pdb:
+                create: false
               networkPolicy:
                 enabled: false
               podAnnotations:
@@ -98,8 +100,12 @@ spec:
               existingSecret: redis-creds
               existingSecretPasswordKey: redisPassword
             replica:
+              pdb:
+                create: false
               replicaCount: 0
             master:
+              pdb:
+                create: false
               persistence:
                 annotations:
                   k8up.io/backup: "false"
