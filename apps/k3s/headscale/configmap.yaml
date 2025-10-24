@@ -49,12 +49,12 @@ data:
       base_domain: vpn.bigli.io
       extra_records:
         - name: "sabnzbd.bigli.io"
-          type: "AAAA"
-          value: "2a02:168:4e7e:1:2913:73a2:b5c6:48bd"
+          type: "A"
+          value: "100.64.0.3"
         - name: "sonarr.bigli.io"
-          type: "AAAA"
-          value: "2a02:168:4e7e:1:2913:73a2:b5c6:48bd"
+          type: "A"
+          value: "100.64.0.3"
         - name: "radarr.bigli.io"
-          type: "AAAA"
-          value: "2a02:168:4e7e:1:2913:73a2:b5c6:48bd"
+          type: "A"
+          value: "100.64.0.3"
 
