@@ -39,7 +39,7 @@ spec:
         publishedService:
           enabled: true
     additionalArguments:
-      - "--providers.kubernetesingress.ingressendpoint.ip=10.64.96.46"
+      - "--providers.kubernetesingress.ingressendpoint.ip=2a02:168:4e7e:1:2913:73a2:b5c6:48bd"
     securityContext:
       capabilities:
         add:
