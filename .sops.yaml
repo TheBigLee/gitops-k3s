@@ -1,4 +1,13 @@
+keys:
+  - &users:
+    - &bigli_Thor age1sqcyumdyut9t3e4557wxawwnvxlqt7wsprtfzgdzw984nlf5jsnqxsyv8z
+    - &bigli_Freya age1wk95zsslqpulwrvuywuhpza0h0gpwzwxq04f536at67p50ec4g5sex6g9r
+    - &bigli_k3s age1pjrv5skm6p380h8smk4x9sp2m0valkz7ldh4npqrrk55vrwn0veqsvv375
 creation_rules:
   - path_regex: .*\.sops\.ya?ml
     encrypted_regex: "^(data|stringData)$"
-    age: age1pjrv5skm6p380h8smk4x9sp2m0valkz7ldh4npqrrk55vrwn0veqsvv375
+    key_groups:
+      - age:
+         - *bigli_k3s
+         - *bigli_Freya
+         - *bigli_Thor
