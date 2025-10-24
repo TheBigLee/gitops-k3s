@@ -46,7 +46,7 @@ data:
           - 149.112.112.112
           - 2620:fe::fe
           - 2620:fe::9
-      base_domain: bigli.io
+      base_domain: vpn.bigli.io
       extra_records:
         - name: "sabnzbd.bigli.io"
           type: "AAAA"
