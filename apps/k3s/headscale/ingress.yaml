@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: headscale
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod-desec
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd,kube-system-hsts-headers@kubernetescrd
+spec:
+  rules:
+    - host: headscale.bigli.io
+      http:
+        paths:
+          - backend:
+              service:
+                name: headscale
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - headscale.bigli.io
+      secretName: ingress-cert
+

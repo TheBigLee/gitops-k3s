@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: headscale
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: headscale
+  serviceName: headscale
+  template:
+    metadata:
+      labels:
+        app: headscale
+    spec:
+      containers:
+        - command:
+            - headscale
+            - serve
+          image: ghcr.io/juanfont/headscale:v0.26.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: GIN_MODE
+              value: release
+          livenessProbe:
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            tcpSocket:
+              port: http
+            timeoutSeconds: 5
+          name: headscale
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /vol/data
+              name: data
+            - mountPath: /etc/headscale
+              name: etc
+            - mountPath: /vol/secret
+              name: secret
+      volumes:
+        - name: etc
+          configMap:
+            name: headscale-etc
+        - name: secret
+          secret:
+            secretName: headscale
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: local-path
+
