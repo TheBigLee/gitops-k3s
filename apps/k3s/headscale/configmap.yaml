@@ -4,7 +4,7 @@ metadata:
   name: headscale-etc
 data:
   config.yaml: |
-    server_url: http://headscale.bigli.io
+    server_url: https://headscale.bigli.io
     listen_addr: 0.0.0.0:8080
     metrics_listen_addr: 0.0.0.0:9090
     grpc_listen_addr: 0.0.0.0:50443
