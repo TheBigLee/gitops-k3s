@@ -47,4 +47,14 @@ data:
           - 2620:fe::fe
           - 2620:fe::9
       base_domain: bigli.io
+      extra_records:
+        - name: "sabnzbd.bigli.io"
+          type: "AAAA"
+          value: "2a02:168:4e7e:1:2913:73a2:b5c6:48bd"
+        - name: "sonarr.bigli.io"
+          type: "AAAA"
+          value: "2a02:168:4e7e:1:2913:73a2:b5c6:48bd"
+        - name: "radarr.bigli.io"
+          type: "AAAA"
+          value: "2a02:168:4e7e:1:2913:73a2:b5c6:48bd"
 
