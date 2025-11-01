@@ -35,17 +35,8 @@ spec:
             persistence:
               library:
                 existingClaim: immich-data
-          redis:
+          valkey:
             enabled: true
-            architecture: standalone
-            auth:
-              enabled: false
-            master:
-              pdb:
-                create: false
-              persistence:
-                annotations:
-                  k8up.io/backup: "false"
           server:
             enabled: true
             ingress:
