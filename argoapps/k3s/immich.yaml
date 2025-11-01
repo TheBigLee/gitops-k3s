@@ -13,12 +13,12 @@ spec:
       targetRevision: 0.10.1
       helm:
         values: |
-          image:
-            tag: v2.2.1
           controllers:
             main:
               containers:
                 main:
+                  image:
+                    tag: v2.2.1
                   env:
                     DB_PASSWORD:
                       valueFrom:
