@@ -15,22 +15,25 @@ spec:
         values: |
           image:
             tag: v2.2.1
-          envFrom:
-            - secretRef:
-                name: immich-postgres-user
-          env:
-            DB_PASSWORD:
-              valueFrom:
-                secretKeyRef:
-                  name: immich-postgres-user
-                  key: password
-            DB_HOSTNAME: immich-postgres-rw
-            DB_USERNAME:
-              valueFrom:
-                secretKeyRef:
-                  name: immich-postgres-user
-                  key: username
-            DB_DATABASE_NAME: immich
+          main:
+            containers:
+              main:
+                envFrom:
+                  - secretRef:
+                    name: immich-postgres-user
+                env:
+                  DB_PASSWORD:
+                    valueFrom:
+                      secretKeyRef:
+                        name: immich-postgres-user
+                        key: password
+                  DB_HOSTNAME: immich-postgres-rw
+                  DB_USERNAME:
+                    valueFrom:
+                      secretKeyRef:
+                        name: immich-postgres-user
+                        key: username
+                  DB_DATABASE_NAME: immich
           immich:
             persistence:
               library:
