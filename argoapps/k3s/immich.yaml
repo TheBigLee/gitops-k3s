@@ -19,9 +19,6 @@ spec:
             main:
               containers:
                 main:
-                  envFrom:
-                    - secretRef:
-                      name: immich-postgres-user
                   env:
                     DB_PASSWORD:
                       valueFrom:
