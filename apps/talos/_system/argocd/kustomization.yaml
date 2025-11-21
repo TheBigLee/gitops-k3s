@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - install.yaml
+patchesStrategicMerge:
+  - ksops-install.yaml
+  - argocd-cm.yaml
+generators:
+  - secret-generator.yaml
