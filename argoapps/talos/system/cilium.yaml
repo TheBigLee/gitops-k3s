@@ -58,6 +58,8 @@ spec:
           tls:
             auto:
               method: cronJob
+          relay:
+            enabled: true
           ui:
             enabled: true
   destination:
