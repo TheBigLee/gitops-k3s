@@ -5,5 +5,5 @@ resources:
 patchesStrategicMerge:
   - ksops-install.yaml
   - argocd-cm.yaml
-#generators:
-#  - secret-generator.yaml
+generators:
+  - secret-generator.yaml
