@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hetzer-csi-driver
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: apps
+  sources:
+    - chart: hcloud
+      repoURL: https://charts.hetzner.cloud
+      targetRevision: 2.18.1
+    - path: apps/talos/_system/hetzer-csi-driver
+      repoURL: https://github.com/TheBigLee/gitops-k3s.git
+      targetRevision: HEAD
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
