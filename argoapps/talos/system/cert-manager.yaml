@@ -16,7 +16,7 @@ spec:
       helm:
         parameters:
           - name: crds.enabled
-            value: true
+            value: "true"
         values: |
           config:
             apiVersion: controller.config.cert-manager.io/v1alpha1
