@@ -40,24 +40,6 @@ spec:
             enabled: true
           server:
             enabled: true
-            ingress:
-              main:
-                enabled: true
-                annotations:
-                  cert-manager.io/cluster-issuer: letsencrypt-prod-desec
-                  traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd,kube-system-hsts-headers@kubernetescrd
-                hosts:
-                  - host: immich.bigli.io
-                    paths:
-                      - path: "/"
-                  - host: photos.bigli.io
-                    paths:
-                      - path: "/"
-                tls:
-                  - hosts:
-                    - immich.bigli.io
-                    - photos.bigli.io
-                    secretName: immich-bigli-io-cert
           machine-learning:
             persistence:
               cache:
