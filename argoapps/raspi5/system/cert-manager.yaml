@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: raspi5-cert-manager
   namespace: argocd
 spec:
   project: system
