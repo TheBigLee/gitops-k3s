@@ -13,9 +13,9 @@ spec:
     helm:
       parameters:
       - name: ipam.operator.clusterPoolIPv4PodCIDRList
-        value: 10.42.0.0/16
+        value: 10.244.0.0/16
       - name: ipam.operator.clusterPoolIPv6PodCIDRList
-        value: 2001:cafe:42:0::/56
+        value: 2001:cafe:244:0::/64
       - name: ipam.operator.clusterPoolIPv6MaskSize
         value: "72" # https://github.com/cilium/cilium/issues/20756#issuecomment-2450328186
       - name: k8sServiceHost
