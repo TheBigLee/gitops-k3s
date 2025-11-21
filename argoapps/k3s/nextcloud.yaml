@@ -131,7 +131,7 @@ spec:
       targetRevision: HEAD
   destination:
     namespace: nextcloud
-    server: https://kubernetes.default.svc
+    name: k3s
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

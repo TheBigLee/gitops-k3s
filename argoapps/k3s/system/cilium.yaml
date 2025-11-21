@@ -42,7 +42,7 @@ spec:
               enabled: true
   destination:
     namespace: kube-system
-    server: https://kubernetes.default.svc
+    name: k3s
   ignoreDifferences:
   - group: apps
     kind: DaemonSet

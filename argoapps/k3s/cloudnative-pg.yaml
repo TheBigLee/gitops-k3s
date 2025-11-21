@@ -18,7 +18,7 @@ spec:
               INHERITED_ANNOTATIONS: k8up.io/backupcommand
   destination:
     namespace: cloudnative-pg
-    server: https://kubernetes.default.svc
+    name: k3s
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

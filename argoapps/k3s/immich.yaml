@@ -67,7 +67,7 @@ spec:
       targetRevision: HEAD
   destination:
     namespace: immich
-    server: https://kubernetes.default.svc
+    name: k3s
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

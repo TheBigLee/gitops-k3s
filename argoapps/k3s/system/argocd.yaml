@@ -13,7 +13,7 @@ spec:
     targetRevision: HEAD
   destination:
     namespace: argocd
-    server: https://kubernetes.default.svc
+    name: k3s
   syncPolicy:
     automated:
       selfHeal: false

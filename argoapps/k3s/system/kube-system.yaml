@@ -10,5 +10,5 @@ spec:
     repoURL: https://github.com/TheBigLee/gitops-k3s.git
     targetRevision: HEAD
   destination:
-    server: https://kubernetes.default.svc
+    name: k3s
     namespace: kube-system

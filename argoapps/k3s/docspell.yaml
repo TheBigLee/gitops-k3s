@@ -13,7 +13,7 @@ spec:
     targetRevision: HEAD
   destination:
     namespace: docspell
-    server: https://kubernetes.default.svc
+    name: k3s
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
