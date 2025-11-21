@@ -48,7 +48,7 @@ spec:
           enableAlpn: true
           enableAppProtocol: true
           gatewayClass:
-            create: true
+            create: "auto"
           hostNetwork:
             enabled: true
         securityContext:
