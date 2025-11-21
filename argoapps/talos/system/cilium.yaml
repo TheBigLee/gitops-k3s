@@ -15,7 +15,7 @@ spec:
       - name: k8sServiceHost
         value: localhost
       - name: k8sServicePort
-        value: 7445
+        value: "7445"
       values: |
         ipv4:
           enabled: true
