@@ -1,0 +1,60 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    # The ACME server URL
+    server: https://acme-v02.api.letsencrypt.org/directory
+    # Email address used for ACME registration
+    email: bigli@bigi.ch
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    # An empty selector will 'match' all Certificate resources that
+    # reference this Issuer.
+    solvers:
+    - selector: {}
+      http01:
+        ingress:
+          class: traefik
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: bigli@bigi.ch
+    privateKeySecretRef:
+      name: letsencrypt-staging
+    solvers:
+    - selector: {}
+      http01:
+        ingress:
+          class: traefik
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod-desec
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: bigli@bigi.ch
+    privateKeySecretRef:
+      name: cert-manager-desec-http-secret
+    solvers:
+    - dns01:
+        webhook:
+          groupName: acmedns.desec.io
+          solverName: desec-http
+          config:
+            apiUrl: https://desec.io/api/v1
+            domainName: bigli.io
+            secretName: desec-token
+            secretKeyName: desec-token
+      selector:
+        dnsZones:
+        - 'bigli.io'

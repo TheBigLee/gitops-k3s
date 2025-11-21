@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  project: system
+  source:
+    path: apps/raspi5/_system/cert-manager
+    repoURL: https://github.com/TheBigLee/gitops-k3s.git
+    targetRevision: HEAD
+  destination:
+    namespace: cert-manager
+    name: raspi5
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  sources:
+    - path: apps/talos/_system/cert-manager
+      repoURL: https://github.com/TheBigLee/gitops-k8s.git
+      targetRevision: HEAD
+    - chart: cert-manager
+      repoURL: oci://quay.io/jetstack/charts/cert-manager
+      targetRevision: v1.19.1
+      helm:
+        parameters:
+          - name: crds.enabled
+            value: true
+        values: |
+          config:
+            apiVersion: controller.config.cert-manager.io/v1alpha1
+            kind: ControllerConfiguration
+            enableGatewayAPI: true
+  destination:
+    namespace: cert-manager
+    server: https://kubernetes.default.svc
+  ignoreDifferences:
+  - group: apps
+    kind: DaemonSet
+    jqPathExpressions:
+    - .spec.template.spec.containers[].env[].valueFrom.resourceFieldRef.divisor
+  project: system
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=true
