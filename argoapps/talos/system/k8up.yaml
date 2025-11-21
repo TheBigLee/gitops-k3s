@@ -46,7 +46,7 @@ spec:
                 value: pushgateway.k8up.svc:9091
           metrics:
             serviceMonitor:
-              enabled: true
+              enabled: false
   destination:
     namespace: k8up
     server: https://kubernetes.default.svc
