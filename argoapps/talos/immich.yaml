@@ -62,7 +62,7 @@ spec:
             persistence:
               cache:
                 storageClass: hcloud-volumes
-    - path: apps/k3s/immich
+    - path: apps/talos/immich
       repoURL: https://github.com/TheBigLee/gitops-k3s.git
       targetRevision: HEAD
   destination:
