@@ -30,6 +30,10 @@ spec:
         ipv6:
           enabled: true
         kubeProxyReplacement: true
+        envoy:
+          securityContext:
+            capabilities:
+              keepCapNetBindService: true
         cgroup:
           autoMount:
             enabled: false
@@ -38,6 +42,8 @@ spec:
           enabled: true
           enableAlpn: true
           enableAppProtocol: true
+          hostNetwork:
+            enabled: true
         securityContext:
           capabilities:
             ciliumAgent:
