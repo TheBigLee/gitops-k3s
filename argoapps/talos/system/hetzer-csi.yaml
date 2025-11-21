@@ -8,7 +8,7 @@ metadata:
 spec:
   project: apps
   sources:
-    - chart: hcloud
+    - chart: hcloud-csi
       repoURL: https://charts.hetzner.cloud
       targetRevision: 2.18.1
     - path: apps/talos/_system/hetzer-csi-driver
