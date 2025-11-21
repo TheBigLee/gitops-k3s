@@ -34,11 +34,6 @@ spec:
           securityContext:
             capabilities:
               keepCapNetBindService: true
-              envoy:
-                - NET_ADMIN
-                - BPF
-                - PERFORM
-                - NET_BIND_SERVICE
         cgroup:
           autoMount:
             enabled: false
@@ -65,6 +60,7 @@ spec:
               - "FOWNER"
               - "SETGID"
               - "SETUID"
+              - "NET_BIND_SERVICE"
             cleanCiliumState:
               - "NET_ADMIN"
               - "SYS_ADMIN"
@@ -77,14 +73,6 @@ spec:
           # Workaround to keep the generated job around for 30d
           # as this makes the argo app unsynced
           ttlSecondsAfterFinished: 2592000
-        hubble:
-          tls:
-            auto:
-              method: cronJob
-          relay:
-            enabled: true
-          ui:
-            enabled: true
   destination:
     namespace: kube-system
     server: https://kubernetes.default.svc
