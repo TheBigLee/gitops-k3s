@@ -1,0 +1,75 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: immich
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: apps
+  sources:
+    - chart: immich
+      repoURL: ghcr.io/immich-app/immich-charts
+      targetRevision: 0.10.3
+      helm:
+        values: |
+          controllers:
+            main:
+              containers:
+                main:
+                  image:
+                    tag: v2.2.3
+                  env:
+                    DB_PASSWORD:
+                      valueFrom:
+                        secretKeyRef:
+                          name: immich-postgres-user
+                          key: password
+                    DB_HOSTNAME: immich-postgres-rw
+                    DB_USERNAME:
+                      valueFrom:
+                        secretKeyRef:
+                          name: immich-postgres-user
+                          key: username
+                    DB_DATABASE_NAME: immich
+          immich:
+            persistence:
+              library:
+                existingClaim: immich-data
+          valkey:
+            enabled: true
+          server:
+            enabled: true
+            ingress:
+              main:
+                enabled: true
+                annotations:
+                  cert-manager.io/cluster-issuer: letsencrypt-prod-desec
+                  traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd,kube-system-hsts-headers@kubernetescrd
+                hosts:
+                  - host: immich.bigli.io
+                    paths:
+                      - path: "/"
+                  - host: photos.bigli.io
+                    paths:
+                      - path: "/"
+                tls:
+                  - hosts:
+                    - immich.bigli.io
+                    - photos.bigli.io
+                    secretName: immich-bigli-io-cert
+          machine-learning:
+            persistence:
+              cache:
+                storageClass: hcloud-volumes
+    - path: apps/k3s/immich
+      repoURL: https://github.com/TheBigLee/gitops-k3s.git
+      targetRevision: HEAD
+  destination:
+    namespace: immich
+    name: k3s
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
