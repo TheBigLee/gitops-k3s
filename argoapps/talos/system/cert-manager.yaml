@@ -33,4 +33,5 @@ spec:
   project: system
   syncPolicy:
     syncOptions:
-    - ServerSideApply=true
+      - ServerSideApply=true
+      - CreateNamespace=true
