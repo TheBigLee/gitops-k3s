@@ -8,7 +8,7 @@ metadata:
 spec:
   sources:
     - path: apps/talos/_system/cert-manager
-      repoURL: https://github.com/TheBigLee/gitops-k8s.git
+      repoURL: https://github.com/TheBigLee/gitops-k3s.git
       targetRevision: HEAD
     - chart: cert-manager
       repoURL: oci://quay.io/jetstack/charts/cert-manager
