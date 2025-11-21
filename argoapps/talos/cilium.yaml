@@ -1,0 +1,84 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilium
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  source:
+    chart: cilium
+    repoURL: https://helm.cilium.io/
+    targetRevision: 1.18.2
+    helm:
+      parameters:
+      - name: ipam.operator.clusterPoolIPv4PodCIDRList
+        value: 10.42.0.0/16
+      - name: ipam.operator.clusterPoolIPv6PodCIDRList
+        value: 2001:cafe:42:0::/56
+      - name: ipam.operator.clusterPoolIPv6MaskSize
+        value: "72" # https://github.com/cilium/cilium/issues/20756#issuecomment-2450328186
+      - name: k8sServiceHost
+        value: localhost
+      - name: k8sServicePort
+        value: 7445
+      values: |
+        cni:
+          chainingMode: none
+        ipv4:
+          enabled: true
+        ipv6:
+          enabled: true
+        kubeProxyReplacement: true
+        cgroup:
+          autoMount:
+            enabled: false
+          hostRoot: /sys/fs/cgroup
+        gatewayAPI:
+          enabled: true
+          enableAlpn: true
+          enableAppProtocol: true
+        securityContext:
+          capabilities:
+            ciliumAgent:
+              - "CHOWN"
+              - "KILL"
+              - "NET_ADMIN"
+              - "NET_RAW"
+              - "IPC_LOCK"
+              - "SYS_ADMIN"
+              - "SYS_RESOURCE"
+              - "DAC_OVERRIDE"
+              - "FOWNER"
+              - "SETGID"
+              - "SETUID"
+            cleanCiliumState:
+              - "NET_ADMIN"
+              - "SYS_ADMIN"
+              - "SYS_RESOURCE"
+        operator:
+          replicas: 1
+        certgen:
+          # Workaround to keep the generated job around for 30d
+          # as this makes the argo app unsynced
+          ttlSecondsAfterFinished: 2592000
+        hubble:
+          tls:
+            auto:
+              method: cronJob
+          relay:
+              enabled: true
+          ui:
+              enabled: true
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  ignoreDifferences:
+  - group: apps
+    kind: DaemonSet
+    jqPathExpressions:
+    - .spec.template.spec.containers[].env[].valueFrom.resourceFieldRef.divisor
+  project: system
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=true
