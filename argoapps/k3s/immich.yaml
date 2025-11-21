@@ -10,42 +10,34 @@ spec:
   sources:
     - chart: immich
       repoURL: ghcr.io/immich-app/immich-charts
-      targetRevision: 0.9.3
+      targetRevision: 0.10.1
       helm:
         values: |
-          image:
-            tag: v2.0.1
-          envFrom:
-            - secretRef:
-                name: immich-postgres-user
-          env:
-            DB_PASSWORD:
-              valueFrom:
-                secretKeyRef:
-                  name: immich-postgres-user
-                  key: password
-            DB_HOSTNAME: immich-postgres-rw
-            DB_USERNAME:
-              valueFrom:
-                secretKeyRef:
-                  name: immich-postgres-user
-                  key: username
-            DB_DATABASE_NAME: immich
+          controllers:
+            main:
+              containers:
+                main:
+                  image:
+                    tag: v2.2.3
+                  env:
+                    DB_PASSWORD:
+                      valueFrom:
+                        secretKeyRef:
+                          name: immich-postgres-user
+                          key: password
+                    DB_HOSTNAME: immich-postgres-rw
+                    DB_USERNAME:
+                      valueFrom:
+                        secretKeyRef:
+                          name: immich-postgres-user
+                          key: username
+                    DB_DATABASE_NAME: immich
           immich:
             persistence:
               library:
                 existingClaim: immich-data
-          redis:
+          valkey:
             enabled: true
-            architecture: standalone
-            auth:
-              enabled: false
-            master:
-              pdb:
-                create: false
-              persistence:
-                annotations:
-                  k8up.io/backup: "false"
           server:
             enabled: true
             ingress:

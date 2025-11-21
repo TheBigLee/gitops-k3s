@@ -10,11 +10,11 @@ spec:
   sources:
     - chart: nextcloud
       repoURL: https://nextcloud.github.io/helm/
-      targetRevision: 8.4.1
+      targetRevision: 8.5.2
       helm:
         values: |
           image:
-            tag: 32.0.0-fpm
+            tag: 32.0.1-fpm
           nginx:
             enabled: true
           nextcloud:
