@@ -10,7 +10,7 @@ spec:
   sources:
     - chart: hcloud-csi
       repoURL: https://charts.hetzner.cloud
-      targetRevision: 2.18.1
+      targetRevision: 2.18.2
     - path: apps/talos/_system/hetzer-csi-driver
       repoURL: https://github.com/TheBigLee/gitops-k3s.git
       targetRevision: HEAD
